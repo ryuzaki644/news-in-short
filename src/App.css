@@ -1,0 +1,35 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  /*height: 80px;*/
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+h1{
+  font-weight: bold;
+  font-size-adjust: auto;
+  /*font-style: oblique;*/
+  text-align: left
+}
+
+.news-card-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*justify-content: center;*/
+  /*align-content: flex-start;*/
+  margin: 30px 30px;
+  height: 100%;
+  /*overflow-y: scroll;*/
+
+}
