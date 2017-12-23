@@ -5,9 +5,12 @@
   - powered by News API
   - News API is a simple HTTP REST API for searching and retrieving live articles from all over the web.
 
+# How to run
+  - To .env File add following details
 
-
-
+  
+          REACT_APP_SECRET_CODE = YOUR_APP_SECRET_CODE_FROM_NEWS_API
+          REACT_APP_URL= http://newsapi.org/v2
 
 
 
