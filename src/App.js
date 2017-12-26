@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import './App.css'
+import {Link} from 'react-router-dom'
 import { Card } from './components/cards/index'
 const url = process.env.REACT_APP_URL
 const apiKey = process.env.REACT_APP_SECRET_CODE
@@ -25,7 +26,6 @@ class App extends Component {
     }
     this.allSources = this.allSources.bind(this)
     this.sortBySource = this.sortBySource.bind(this)
-    this.getByCategory = this.getByCategory.bind(this)
   }
 
   componentDidMount () {
@@ -45,14 +45,6 @@ class App extends Component {
       return res.data
     }).catch(err => {
       console.log(err)
-    })
-  }
-
-  getByCategory (categories) {
-    const categString = favouriteCategories.join(',')
-    console.log(categString)
-    axios.get(`http://localhost:3000/articles`).then(res => {
-      console.log(res)
     })
   }
 
@@ -83,13 +75,23 @@ class App extends Component {
   render () {
     const {articles} = this.state
     const newsBySource = this.sortBySource(articles, favouriteCategories, favouritesObject)
-    this.getByCategory(favouriteCategories)
+    const CATEGORIES = ['business', 'entertainment', 'gaming', 'general', 'health-and-medical', 'music', 'politics', 'science-and-nature', 'sport', 'technology']
     return (
       <div className='App'>
-        <div className=''>
+        <div className='App-intro'>
+          <h2>
+            News-Inshort
+          </h2>
+        </div>
+        <div className='category-container'>
+          {CATEGORIES.map(categ => {
+            return <h4 className='category-item'><Link to={`/${categ}`}> {categ} </Link></h4>
+          })}
+        </div>
+        <div>
           {favouriteCategories.map(categ => {
-            return <div key={categ}>
-              <h1 className='App-intro'>{categ}</h1>
+            return <div className='news-card-favourites' key={categ}>
+              <h1 className='news-card-header'>{categ}</h1>
               <div className='news-card-container'>
                 {
                   favouritesObject[categ].map((source, i) => {
