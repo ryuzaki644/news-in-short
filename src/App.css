@@ -7,23 +7,35 @@
   height: 100%;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  /*height: 80px;*/
-}
-
 .App-title {
   font-size: 1.5em;
 }
 
 .App-intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   font-family: serif;
   font-weight: bolder;
   font-size: 1.3em;
-  text-decoration:underline;
-
-  margin: 10px;
+  /*text-decoration:underline;*/
+  margin: 10px 10%;
+  padding: 0px 20%;
   /*font-size: large;*/
+}
+
+.input{
+  align-self: center;
+  height: 30px;
+  border-radius: 5px;
+  border-width:thin;
+  text-align: center;
+  text-decoration: none;
+}
+
+input [type='text'] {
+  text-align: left;
+  text-decoration: none;
 }
 
 .App-intro h1,h2 {
@@ -31,10 +43,16 @@
   font-size-adjust: auto;
   /*font-style: oblique;*/
   margin-left: 30px;
+  margin-right: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
+  text-decoration: underline;
 }
 
+p.read-more{
+  text-align: right;
+  margin: 10px 20%;
+}
 .App-intro h1{
   text-align: left;
 }
