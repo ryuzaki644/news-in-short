@@ -33,11 +33,8 @@ class App extends Component {
       return acc + favouritesObject[categ].join(',')
     }, '')
     const encodeAPIKey = encodeURI(apiKey)
-    // console.log(allSources)
-    // console.log(`${url}/everything?sources=${allSources}&language=en&apiKey=${encodeAPIKey}`)
     axios.get(`${url}/everything?sources=${allSources}&language=en&apiKey=${encodeAPIKey}`)
     .then(res => {
-      // console.log(res, 'in mount data')
       const { articles } = res.data
       this.setState({
         articles
@@ -79,13 +76,19 @@ class App extends Component {
     return (
       <div className='App'>
         <div className='App-intro'>
-          <h2>
+          <h2 className='App-heaeder'>
             News-Inshort
           </h2>
+          <input
+            className='input'
+            type='text'
+            name='search'
+            placeholder='search'
+          />
         </div>
         <div className='category-container'>
           {CATEGORIES.map(categ => {
-            return <h4 className='category-item'><Link to={`/${categ}`}> {categ} </Link></h4>
+            return <h4 key={categ} className='category-item'><Link to={`/${categ}`}> {categ} </Link></h4>
           })}
         </div>
         <div>
@@ -100,6 +103,12 @@ class App extends Component {
                     })
                   })
                 }
+                { favouritesObject[categ].length !== 0
+                  ? <p className='read-more'>
+                    <Link to={categ}>Read More...</Link>
+                  </p>
+                  : ''
+                }
               </div>
             </div>
           })}
@@ -108,8 +117,8 @@ class App extends Component {
           {
             articles.length === 0
             ? <h1 className='App-intro'> Couldnot load the News</h1>
-            : articles.map(entry => {
-              return <Card articles={entry} />
+            : articles.map((entry, index) => {
+              return <Card articles={entry} key={index}/>
             })
           }
         </div>
