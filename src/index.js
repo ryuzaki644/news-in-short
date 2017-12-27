@@ -9,7 +9,8 @@ import App from './App'
 import './index.css'
 import reducers from './reducers'
 // components
-import { Favourites } from './components/favourites/index'
+import { Favourites } from './components/favourites'
+import Categories from './components/categories'
 
 const AppWithRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppWithRouter = () => {
       <Switch>
         <Route exact path='/' component={App} />
         <Route exact path='/favourites' component={Favourites} />
+        <Route exact path='/:category' component={Categories} />
       </Switch>
     </BrowserRouter>
   )
