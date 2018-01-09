@@ -1,4 +1,5 @@
 # news-in-short
+  @powered by http://newsapi.org
 
 
 # API
